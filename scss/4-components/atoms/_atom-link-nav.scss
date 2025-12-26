@@ -1,0 +1,118 @@
+// -----------------------------------------------------------
+// DEPENDENCIAS
+// -----------------------------------------------------------
+@use 'sass:map';
+@use '../../2-tools/functions' as func;
+@use '../../2-tools/mixins' as mix;
+@use '../../1-settings/options' as mapOpt;
+@use '../../1-settings/opt-colors' as colorMap;
+@use '../../1-settings/opt-typography' as typoMap;
+@use '../../1-settings/opt-breakpoints' as break;
+
+// -----------------------------------------------------------
+// ESTILO BASE
+// -----------------------------------------------------------
+$style-key: 'headlines-regular-h6';
+
+// -----------------------------------------------------------
+// COMPONENTE ATOM LINK NAV
+// -----------------------------------------------------------
+body{ background-color: bisque;}
+.atom-link-nav {
+    
+    $mobile-style: map.get(typoMap.$typography-laptop-styles, $style-key);
+
+    // Estilos texto
+    font-family: map.get($mobile-style, 'font-family');
+    font-weight: map.get($mobile-style, 'font-weight');
+    font-size: func.to-rem(map.get($mobile-style, 'font-size'));
+    line-height: func.to-rem(map.get($mobile-style, 'line-height'));
+    letter-spacing: map.get($mobile-style, 'letter-spacing');
+
+    // Estilos visuales
+    text-align: left;
+    cursor: pointer;
+    display: block;
+    color: map.get(colorMap.$opt-colors, 'neutral', '900');
+    border-radius: map.get(mapOpt.$opt-radius, 40);
+    padding: map.get(mapOpt.$opt-dimensions, 80) map.get(mapOpt.$opt-dimensions, 80);
+    white-space: nowrap;
+    
+    // Estilos interacción
+    text-decoration: none;
+    transition: color map.get(mapOpt.$opt-movement-duration, medium) map.get(mapOpt.$opt-movement-easing, in-out);
+
+    // --- TABLET ---
+    @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+        $tablet-style: map.get(typoMap.$typography-tablet-styles, $style-key);
+        
+        // Estilos texto TABLET
+        text-align: center;
+        //display: inline-flex;
+        display: inline-block;
+        line-height: 1; // Fuerza una altura de línea controlada
+        text-decoration: none;
+        vertical-align: middle;
+        font-size: func.to-rem(map.get($tablet-style, 'font-size'));
+        line-height: func.to-rem(map.get($tablet-style, 'line-height'));
+
+        // Estilos visuales TABLET
+        border-radius: map.get(mapOpt.$opt-radius, 100);
+        padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 80);
+    }
+
+    // --- LAPTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+        $laptop-style: map.get(typoMap.$typography-laptop-styles, $style-key);
+        
+        // Estilos texto LAPTOP
+        font-size: func.to-rem(map.get($laptop-style, 'font-size'));
+        line-height: func.to-rem(map.get($laptop-style, 'line-height'));
+
+        // Estilos visuales LAPTOP
+        padding: map.get(mapOpt.$opt-dimensions, 60) map.get(mapOpt.$opt-dimensions, 90);
+    }
+
+    // --- DESKTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+        $desktop-style: map.get(typoMap.$typography-desktop-styles, $style-key);
+        
+        // Estilos texto LAPTOP
+        font-size: func.to-rem(map.get($desktop-style, 'font-size'));
+        line-height: func.to-rem(map.get($desktop-style, 'line-height'));
+
+        // Estilos visuales LAPTOP
+        padding: map.get(mapOpt.$opt-dimensions, 70) map.get(mapOpt.$opt-dimensions, 100);
+    }
+
+    // -----------------------------------------------------------
+    // ESTADOS
+    // -----------------------------------------------------------
+    &:hover {
+        color: map.get(colorMap.$opt-colors, 'primary', '500');
+        background-color: map.get(colorMap.$opt-colors, 'base', 'white');
+        //background-color: color-mix(in srgb, map.get(colorMap.$opt-colors, 'base', 'white') map.get(colorMap.$opacity-levels, 90), transparent);
+        transition: background-color map.get(mapOpt.$opt-movement-duration, fast) map.get(mapOpt.$opt-movement-easing, in-out);
+    }
+
+    &:active {
+        // --- TABLET ---
+        @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+            transform: translate(map.get(mapOpt.$opt-dimensions, 20), map.get(mapOpt.$opt-dimensions, 20));
+        }
+    }
+
+    &:focus {
+        outline: none;
+    }
+
+    &--active {
+        background: map.get(colorMap.$opt-colors, 'neutral', '300');
+    }
+
+    &--disabled {
+        cursor: not-allowed;
+        color: map.get(colorMap.$opt-colors, 'neutral', '400'); 
+        pointer-events: none;
+    }
+}
