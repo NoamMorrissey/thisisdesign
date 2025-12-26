@@ -1,0 +1,48 @@
+// -----------------------------------------------------------
+// DEPENDENCIAS
+// -----------------------------------------------------------
+@use 'sass:map';
+@use '../../2-tools/functions' as func;
+@use '../../2-tools/mixins' as mix;
+@use '../../1-settings/options' as mapOpt;
+@use '../../1-settings/opt-colors' as colorMap;
+@use '../../1-settings/opt-typography' as typoMap;
+@use '../../1-settings/opt-breakpoints' as break;
+
+// -----------------------------------------------------------
+// COMPONENTE MOLECULE LOGO NAV
+// -----------------------------------------------------------
+.molecule-logo-nav{
+
+    position: relative;
+    left: 2.5%;
+
+    // --- TABLET ---
+    @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+    
+        // Estilos visuales
+        padding-right: map.get(mapOpt.$opt-dimensions, 270);
+        position: flex;
+        left: auto;
+    }
+    // --- LAPTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+        padding-right: map.get(mapOpt.$opt-dimensions, 290);
+    }
+
+    // --- DESKTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+        padding-right: map.get(mapOpt.$opt-dimensions, 310);
+    }
+    
+    h1 {
+        font-size: inherit;     /* Elimina el 2em de normalize */
+        margin: 0;              /* Elimina el 0.67em de normalize */
+        font-weight: inherit;   /* Opcional: para que no herede la negrita por defecto */
+        line-height: inherit;   /* Hereda la altura de línea del contenedor */
+    }
+
+}
+.is-open .molecule-logo-nav { 
+    padding-left: 2.5%;
+ }

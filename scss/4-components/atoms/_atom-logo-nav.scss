@@ -1,0 +1,118 @@
+// -----------------------------------------------------------
+// DEPENDENCIAS
+// -----------------------------------------------------------
+@use 'sass:map';
+@use '../../2-tools/functions' as func;
+@use '../../2-tools/mixins' as mix;
+@use '../../1-settings/options' as mapOpt;
+@use '../../1-settings/opt-colors' as colorMap;
+@use '../../1-settings/opt-typography' as typoMap;
+@use '../../1-settings/opt-breakpoints' as break;
+
+// -----------------------------------------------------------
+// ESTILO BASE
+// -----------------------------------------------------------
+$style-key: 'headlines-regular-h6';
+
+// -----------------------------------------------------------
+// COMPONENTE ATOM LINK NAV
+// -----------------------------------------------------------
+.atom-logo-nav {
+    
+    $mobile-style: map.get(typoMap.$typography-laptop-styles, $style-key);
+
+    // Estilos texto
+    font-family: map.get($mobile-style, 'font-family');
+    font-weight: map.get(mapOpt.$opt-font-weights, 'semi-bold');
+    font-size: func.to-rem(map.get($mobile-style, 'font-size'));
+    line-height: func.to-rem(map.get($mobile-style, 'line-height'));
+    letter-spacing: map.get(mapOpt.$opt-font-spacing, tight);
+
+    // Estilos visuales
+    text-align: left;
+    cursor: pointer;
+    display: inline-flex;
+    color: map.get(colorMap.$opt-colors, 'base', 'white'); 
+    background: map.get(colorMap.$opt-colors, 'base', 'black');
+    border-radius: map.get(mapOpt.$opt-radius, 40);
+    padding: map.get(mapOpt.$opt-dimensions, 60) map.get(mapOpt.$opt-dimensions, 60);
+    white-space: nowrap;
+    
+    // Estilos interacción
+    text-decoration: none;
+    transition: color map.get(mapOpt.$opt-movement-duration, medium) map.get(mapOpt.$opt-movement-easing, in-out);
+
+    &--name {
+        display: none;
+    }
+
+    // --- TABLET ---
+    @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+        $tablet-style: map.get(typoMap.$typography-tablet-styles, $style-key);
+        
+        // Estilos texto TABLET
+        text-align: center;
+        display: inline-flex;
+        font-size: func.to-rem(map.get($tablet-style, 'font-size'));
+        line-height: func.to-rem(map.get($tablet-style, 'line-height'));
+
+        // Estilos visuales TABLET
+        color: map.get(colorMap.$opt-colors, 'base', 'black'); 
+        background:none;
+        border-radius: map.get(mapOpt.$opt-radius, 0);
+        padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 80);
+
+        &--iso {
+            display: none;
+        }
+        &--name {
+            display:inline;
+        }
+    }
+
+    // --- LAPTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+        $laptop-style: map.get(typoMap.$typography-laptop-styles, $style-key);
+        
+        // Estilos texto LAPTOP
+        font-size: func.to-rem(map.get($laptop-style, 'font-size'));
+        line-height: func.to-rem(map.get($laptop-style, 'line-height'));
+
+        // Estilos visuales LAPTOP
+        padding: map.get(mapOpt.$opt-dimensions, 60) map.get(mapOpt.$opt-dimensions, 90);
+    }
+
+    // --- DESKTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+        $desktop-style: map.get(typoMap.$typography-desktop-styles, $style-key);
+        
+        // Estilos texto LAPTOP
+        font-size: func.to-rem(map.get($desktop-style, 'font-size'));
+        line-height: func.to-rem(map.get($desktop-style, 'line-height'));
+
+        // Estilos visuales LAPTOP
+        padding: map.get(mapOpt.$opt-dimensions, 70) map.get(mapOpt.$opt-dimensions, 100);
+    }
+
+    // -----------------------------------------------------------
+    // ESTADOS
+    // -----------------------------------------------------------
+    &:hover {
+        color: map.get(colorMap.$opt-colors, 'base', 'white');
+        background: map.get(colorMap.$opt-colors, 'primary', '500');
+        transition: background-color map.get(mapOpt.$opt-movement-duration, fast) map.get(mapOpt.$opt-movement-easing, in-out);
+
+        // --- TABLET ---
+        @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+            color: map.get(colorMap.$opt-colors, 'primary', '500');
+            background:none;
+        }
+    }
+
+    &:active {
+        // --- TABLET ---
+        @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+            transform: translate(map.get(mapOpt.$opt-dimensions, 20), map.get(mapOpt.$opt-dimensions, 20));
+        }
+    }
+}

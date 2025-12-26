@@ -1,0 +1,22 @@
+// -----------------------------------------------------------
+// DEPENDENCIAS
+// -----------------------------------------------------------
+@use 'sass:map';
+@use '../1-settings/options' as var;
+@use '../1-settings/opt-colors' as colorMap;
+@use '../1-settings/opt-breakpoints' as break;
+@use '../2-tools/functions' as func;
+@use '../2-tools/mixins' as mix;
+
+.bloque {
+    background-color: map.get(colorMap.$opt-colors, 'base', 'black');
+}
+.inner-bloque {
+    background-color: map.get(colorMap.$opt-colors, 'brand', 'red');
+}
+.inner-bloque2 {
+    background-color: map.get(colorMap.$opt-colors, 'brand', 'yellow');
+}
+.inner-bloque3 {
+    background-color: map.get(colorMap.$opt-colors, 'brand', 'blue');
+}

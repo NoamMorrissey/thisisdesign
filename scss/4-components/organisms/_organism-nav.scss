@@ -1,0 +1,183 @@
+// -----------------------------------------------------------
+// DEPENDENCIAS
+// -----------------------------------------------------------
+@use 'sass:map';
+@use '../../2-tools/functions' as func;
+@use '../../2-tools/mixins' as mix;
+@use '../../1-settings/options' as mapOpt;
+@use '../../1-settings/opt-colors' as colorMap;
+@use '../../1-settings/opt-typography' as typoMap;
+@use '../../1-settings/opt-breakpoints' as break;
+
+// -----------------------------------------------------------
+// COMPONENTE ORGANISM NAV
+// -----------------------------------------------------------
+.organism-nav {
+
+    .nav-toggle {
+        position: relative;
+        right: 70px;
+        padding-top: 12px;
+        margin: 0;
+    }
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 70px; // Altura barra móvil
+    //padding: map.get(mapOpt.$opt-dimensions, 0) map.get(mapOpt.$opt-dimensions, 100);
+    background-color: map.get(colorMap.$opt-colors, 'base', 'white');
+    z-index: map.get(mapOpt.$opt-stroke, max);      /* Por encima de todo el contenido */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    //transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+
+    &.is-open {
+        height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+        padding: 0; // Quitamos el padding que empuja los elementos
+
+        // Fijamos el Logo y la Hamburguesa arriba para que no se muevan
+        .molecule-logo-nav {
+            position: absolute;
+            top: 0;
+            left: map.get(mapOpt.$opt-dimensions, 0);
+            height: 70px; // Misma altura que la barra cerrada
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .nav-toggle {
+            position: absolute;
+            //top: 0;
+            right: 70px;
+            height: 70px; // Misma altura para centrar el icono verticalmente
+            display: flex;
+            align-items: center;
+            background-color: transparent; // O el color que prefieras
+            padding-top: 0px;
+
+        }
+
+        .molecule-link-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 95%;
+            margin-top: 100px; // Espacio para que los links no tapen el logo/botón
+            opacity: 1;
+            transform: translateY(0);
+            //transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+    }
+    // Estilo del botón hamburguesa
+    .nav-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        outline: none;
+        appearance: none;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        order: 2;
+        z-index: 1010; // Asegurar que esté por encima de todo
+        padding-right: 2.5%;
+        
+       .hamburger {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background-color: map.get(colorMap.$opt-colors, 'neutral', '900');
+            position: relative;
+            // Eliminamos el left: -44px que tenías, ya que movía el icono fuera del botón
+            //transition: background-color 0.3s;
+
+            &::before, 
+            &::after {
+                content: '';
+                position: absolute;
+                width: 24px;
+                height: 2px;
+                background-color: map.get(colorMap.$opt-colors, 'neutral', '900');
+                left: 0;
+                //transition: transform 0.3s, top 0.3s, bottom 0.3s;
+            }
+
+            &::before { top: -8px; }
+            &::after { bottom: 8px; }
+        }
+    }
+    // Animación de la hamburguesa a X (Opcional pero recomendado)
+    &.is-open .hamburger {
+        background-color: transparent;
+        &::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+        &::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
+    }
+
+
+    // --- TABLET ---
+    @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+
+        /* 1. Posicionamiento fijo para que pueda desplazarse */ 
+        top: func.to-rem(map.get(mapOpt.$opt-dimensions, 160));      /* Distancia desde el techo de la pantalla */
+        left: 50%;
+        transform: translateX(-50%);                    /* Lo mantiene centrado */
+    
+        // Estilos visuales
+        width: fit-content;
+        height: auto;
+        transition: transform 0.4s ease-in-out, opacity 0.2s ease;
+        animation: slideDownInitial 0.4s ease-out;
+        transform: translate(-50%, 0);
+
+        gap: map.get(mapOpt.$opt-dimensions, 0);
+        margin: 0 auto;
+
+        border-radius: map.get(mapOpt.$opt-radius, 50);
+        background-color: color-mix(in srgb, map.get(colorMap.$opt-colors, 'base', 'white') map.get(colorMap.$opacity-levels, 80), transparent);
+        box-shadow: 0 0 map.get(mapOpt.$opt-dimensions, 50) 0 color-mix(in srgb, map.get(colorMap.$opt-colors, 'base', 'black') map.get(colorMap.$opacity-levels, 20), transparent);
+
+        padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 0);
+        
+        &.is-hidden {
+            // Añadimos !important para romper el bloqueo de la animación si fuera necesario
+            transform: translate(-50%, -200%) !important; 
+            opacity: 1;
+            pointer-events: none;
+        }
+        .nav-toggle {
+            display: none;
+        }
+
+    }
+
+    // --- LAPTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+        padding: map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 0);
+        top: func.to-rem(map.get(mapOpt.$opt-dimensions, 180));      /* Distancia desde el techo de la pantalla */
+
+    }
+
+    // --- DESKTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+        padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 0);
+        top: func.to-rem(map.get(mapOpt.$opt-dimensions, 200));      /* Distancia desde el techo de la pantalla */
+
+    }
+}
+@keyframes slideDownInitial {
+    0% { transform: translate(-50%, -100px); opacity: 1; }
+    100% { transform: translate(-50%, 0); opacity: 1; }
+}
