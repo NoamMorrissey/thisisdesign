@@ -1822,10 +1822,47 @@ body {
 .atom-pill-card {
   font-family: "Public Sans";
   font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1.125rem;
+  font-size: 0.625rem;
+  line-height: 0.875rem;
   letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
 }
+.atom-pill-card .material-icons {
+  display: none;
+}
+@media (min-width: 768px) {
+  .atom-pill-card {
+    font-size: 0.625rem;
+    line-height: 0.875rem;
+    gap: 6px;
+  }
+  .atom-pill-card .material-icons {
+    display: inline;
+    font-size: 20px;
+  }
+}
+@media (min-width: 1024px) {
+  .atom-pill-card {
+    font-size: 0.75rem;
+    line-height: 1.125rem;
+    gap: 8px;
+  }
+  .atom-pill-card .material-icons {
+    font-size: 22px;
+  }
+}
+@media (min-width: 1366px) {
+  .atom-pill-card {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    gap: 12px;
+  }
+  .atom-pill-card .material-icons {
+    font-size: 24px;
+  }
+}
+
 .molecule-link-nav {
   display: none;
   align-items: center;
