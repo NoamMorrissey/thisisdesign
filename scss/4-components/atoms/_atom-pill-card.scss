@@ -12,14 +12,14 @@
 // -----------------------------------------------------------
 // ESTILO BASE
 // -----------------------------------------------------------
-$style-key: 'headlines-regular-h6';
+$style-key: 'overline';
 
 // -----------------------------------------------------------
 // COMPONENTE ATOM LANG NAV
 // -----------------------------------------------------------
 .atom-pill-card {
     
-    $mobile-style: map.get(typoMap.$typography-laptop-styles, $style-key);
+    $mobile-style: map.get(typoMap.$typography-mobile-styles, $style-key);
 
     // Estilos texto
     font-family: map.get($mobile-style, 'font-family');
@@ -29,41 +29,69 @@ $style-key: 'headlines-regular-h6';
     letter-spacing: map.get(mapOpt.$opt-font-spacing, tight);
 
     // Estilos visuales
-
+    display: flex;
+    align-items: center;
 
     // Estilos interacción
 
 
-    atom-pill-card--base {
+    .material-icons{
+        display: none;
+    }
+    .atom-pill-card--base {
         //display: none;
     }
-    atom-pill-card--hover {
+    .atom-pill-card--hover {
         //display: none;
     }
 
     // --- TABLET ---
     @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+        $tablet-style: map.get(typoMap.$typography-tablet-styles, $style-key);
+        
+        // Estilos texto LAPTOP
+        font-size: func.to-rem(map.get($tablet-style, 'font-size'));
+        line-height: func.to-rem(map.get($tablet-style, 'line-height'));
+
+        // Estilos visuales
+        gap: map.get(mapOpt.$opt-dimensions, 40);
+
+        .material-icons{
+            display: inline;
+            font-size: map.get(mapOpt.$opt-dimensions, 100);
+        }
 
     }
     // --- LAPTOP ---
     @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+        $laptop-style: map.get(typoMap.$typography-laptop-styles, $style-key);
+        
+        // Estilos texto LAPTOP
+        font-size: func.to-rem(map.get($laptop-style, 'font-size'));
+        line-height: func.to-rem(map.get($laptop-style, 'line-height'));
+
+        // Estilos visuales
+        gap: map.get(mapOpt.$opt-dimensions, 50);
+
+        .material-icons{
+            font-size: map.get(mapOpt.$opt-dimensions, 110);
+        }
     
     }
     // --- DESKTOP ---
     @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+        $desktop-style: map.get(typoMap.$typography-desktop-styles, $style-key);
+        
+        // Estilos texto LAPTOP
+        font-size: func.to-rem(map.get($desktop-style, 'font-size'));
+        line-height: func.to-rem(map.get($desktop-style, 'line-height'));
+
+        // Estilos visuales
+        gap: map.get(mapOpt.$opt-dimensions, 60);
+
+        .material-icons{
+            font-size: map.get(mapOpt.$opt-dimensions, 120);
+        }
 
     }
-}
-
-// -----------------------------------------------------------
-// ESTADOS
-// -----------------------------------------------------------
-// Este estado tendré que pasarlo al scss de la molécula
-
-.molecule-card--hover {
-
-    .atom-pill-card {
-
-    }
-
 }
