@@ -1819,6 +1819,13 @@ body {
   background-image: url("../assets/images/flags/ES.png");
 }
 
+.atom-pill-card {
+  font-family: "Public Sans";
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  letter-spacing: -0.02em;
+}
 .molecule-link-nav {
   display: none;
   align-items: center;
