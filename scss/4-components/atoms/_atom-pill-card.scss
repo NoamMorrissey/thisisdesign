@@ -12,15 +12,58 @@
 // -----------------------------------------------------------
 // ESTILO BASE
 // -----------------------------------------------------------
-// $style-key: 'headlines-regular-h6';
+$style-key: 'headlines-regular-h6';
 
 // -----------------------------------------------------------
 // COMPONENTE ATOM LANG NAV
 // -----------------------------------------------------------
-.material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24
+.atom-pill-card {
+    
+    $mobile-style: map.get(typoMap.$typography-laptop-styles, $style-key);
+
+    // Estilos texto
+    font-family: map.get($mobile-style, 'font-family');
+    font-weight: map.get(mapOpt.$opt-font-weights, 'semi-bold');
+    font-size: func.to-rem(map.get($mobile-style, 'font-size'));
+    line-height: func.to-rem(map.get($mobile-style, 'line-height'));
+    letter-spacing: map.get(mapOpt.$opt-font-spacing, tight);
+
+    // Estilos visuales
+
+
+    // Estilos interacción
+
+
+    atom-pill-card--base {
+        //display: none;
+    }
+    atom-pill-card--hover {
+        //display: none;
+    }
+
+    // --- TABLET ---
+    @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+
+    }
+    // --- LAPTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+    
+    }
+    // --- DESKTOP ---
+    @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+
+    }
+}
+
+// -----------------------------------------------------------
+// ESTADOS
+// -----------------------------------------------------------
+// Este estado tendré que pasarlo al scss de la molécula
+
+.molecule-card--hover {
+
+    .atom-pill-card {
+
+    }
+
 }
