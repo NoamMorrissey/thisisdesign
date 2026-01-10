@@ -17,7 +17,8 @@ $style-key: 'overline';
 // -----------------------------------------------------------
 // COMPONENTE ATOM LANG NAV
 // -----------------------------------------------------------
-.atom-pill-card--base, .atom-pill-card--hover {
+.atom-pill-card--base, 
+.atom-pill-card--hover {
     
     $mobile-style: map.get(typoMap.$typography-mobile-styles, $style-key);
 
@@ -27,10 +28,13 @@ $style-key: 'overline';
     font-size: func.to-rem(map.get($mobile-style, 'font-size'));
     line-height: func.to-rem(map.get($mobile-style, 'line-height'));
     letter-spacing: map.get(mapOpt.$opt-font-spacing, tight);
+    text-transform: uppercase;
 
     // Estilos visuales
     display: flex;
     align-items: center;
+    width: fit-content;
+    margin: map.get(mapOpt.$opt-dimensions, 0);
 
     // Estilos interacción
 
