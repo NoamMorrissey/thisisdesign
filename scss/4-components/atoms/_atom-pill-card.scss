@@ -17,7 +17,7 @@ $style-key: 'overline';
 // -----------------------------------------------------------
 // COMPONENTE ATOM LANG NAV
 // -----------------------------------------------------------
-.atom-pill-card {
+.atom-pill-card--base, .atom-pill-card--hover {
     
     $mobile-style: map.get(typoMap.$typography-mobile-styles, $style-key);
 
@@ -37,12 +37,6 @@ $style-key: 'overline';
 
     .material-icons{
         display: none;
-    }
-    .atom-pill-card--base {
-        //display: none;
-    }
-    .atom-pill-card--hover {
-        //display: none;
     }
 
     // --- TABLET ---

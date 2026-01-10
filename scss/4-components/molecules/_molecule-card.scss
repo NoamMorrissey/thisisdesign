@@ -1,14 +1,50 @@
+// -----------------------------------------------------------
+// DEPENDENCIAS
+// -----------------------------------------------------------
+@use 'sass:map';
+@use '../../2-tools/functions' as func;
+@use '../../2-tools/mixins' as mix;
+@use '../../1-settings/options' as mapOpt;
+@use '../../1-settings/opt-colors' as colorMap;
+@use '../../1-settings/opt-typography' as typoMap;
+@use '../../1-settings/opt-breakpoints' as break;
 
 // -----------------------------------------------------------
 // ESTADOS
 // -----------------------------------------------------------
-
-.molecule-card--bg {
+/*
+.molecule-card {
 
     .atom-pill-card {
-        background-color: aqua;
-        border-radius: 250px;
-        padding: 12px 30px;
+        background-color: map.get(colorMap.$opt-colors, 'base', 'white');
+        border-radius: map.get(mapOpt.$opt-radius, 100);
+        padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 60);
+
+        // --- TABLET ---
+        @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 80);
+        
+        }
+        // --- LAPTOP ---
+        @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 90);
+
+        }
+        // --- DESKTOP ---
+        @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 100);
+
+        }
+
+    }
+
+    &--hover {
+
+        
     }
 
 }
+*/

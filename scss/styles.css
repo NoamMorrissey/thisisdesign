@@ -1819,7 +1819,7 @@ body {
   background-image: url("../assets/images/flags/ES.png");
 }
 
-.atom-pill-card {
+.atom-pill-card--base, .atom-pill-card--hover {
   font-family: "Public Sans";
   font-weight: 600;
   font-size: 0.625rem;
@@ -1828,37 +1828,37 @@ body {
   display: flex;
   align-items: center;
 }
-.atom-pill-card .material-icons {
+.atom-pill-card--base .material-icons, .atom-pill-card--hover .material-icons {
   display: none;
 }
 @media (min-width: 768px) {
-  .atom-pill-card {
+  .atom-pill-card--base, .atom-pill-card--hover {
     font-size: 0.625rem;
     line-height: 0.875rem;
     gap: 6px;
   }
-  .atom-pill-card .material-icons {
+  .atom-pill-card--base .material-icons, .atom-pill-card--hover .material-icons {
     display: inline;
     font-size: 20px;
   }
 }
 @media (min-width: 1024px) {
-  .atom-pill-card {
+  .atom-pill-card--base, .atom-pill-card--hover {
     font-size: 0.75rem;
     line-height: 1.125rem;
     gap: 8px;
   }
-  .atom-pill-card .material-icons {
+  .atom-pill-card--base .material-icons, .atom-pill-card--hover .material-icons {
     font-size: 22px;
   }
 }
 @media (min-width: 1366px) {
-  .atom-pill-card {
+  .atom-pill-card--base, .atom-pill-card--hover {
     font-size: 0.875rem;
     line-height: 1.25rem;
     gap: 12px;
   }
-  .atom-pill-card .material-icons {
+  .atom-pill-card--base .material-icons, .atom-pill-card--hover .material-icons {
     font-size: 24px;
   }
 }
@@ -1951,12 +1951,42 @@ body {
   padding-left: 2.5%;
 }
 
-.molecule-card--bg .atom-pill-card {
-  background-color: aqua;
-  border-radius: 250px;
-  padding: 12px 30px;
-}
+/*
+.molecule-card {
 
+    .atom-pill-card {
+        background-color: map.get(colorMap.$opt-colors, 'base', 'white');
+        border-radius: map.get(mapOpt.$opt-radius, 100);
+        padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 60);
+
+        // --- TABLET ---
+        @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 80);
+
+        }
+        // --- LAPTOP ---
+        @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 90);
+
+        }
+        // --- DESKTOP ---
+        @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 100);
+
+        }
+
+    }
+
+    &--hover {
+
+
+    }
+
+}
+*/
 .organism-nav {
   position: fixed;
   top: 0;
