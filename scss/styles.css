@@ -1951,6 +1951,12 @@ body {
   padding-left: 2.5%;
 }
 
+.molecule-card--bg .atom-pill-card {
+  background-color: aqua;
+  border-radius: 250px;
+  padding: 12px 30px;
+}
+
 .organism-nav {
   position: fixed;
   top: 0;
