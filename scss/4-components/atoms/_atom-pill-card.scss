@@ -1,0 +1,26 @@
+// -----------------------------------------------------------
+// DEPENDENCIAS
+// -----------------------------------------------------------
+@use 'sass:map';
+@use '../../2-tools/functions' as func;
+@use '../../2-tools/mixins' as mix;
+@use '../../1-settings/options' as mapOpt;
+@use '../../1-settings/opt-colors' as colorMap;
+@use '../../1-settings/opt-typography' as typoMap;
+@use '../../1-settings/opt-breakpoints' as break;
+
+// -----------------------------------------------------------
+// ESTILO BASE
+// -----------------------------------------------------------
+// $style-key: 'headlines-regular-h6';
+
+// -----------------------------------------------------------
+// COMPONENTE ATOM LANG NAV
+// -----------------------------------------------------------
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}

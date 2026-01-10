@@ -1819,6 +1819,10 @@ body {
   background-image: url("../assets/images/flags/ES.png");
 }
 
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
 .molecule-link-nav {
   display: none;
   align-items: center;
