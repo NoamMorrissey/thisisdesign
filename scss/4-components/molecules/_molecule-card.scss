@@ -16,10 +16,10 @@
 
     // Enlace A de toda la CARD
     .molecule-card--link {
-        text-decoration: none; /* Quita el subrayado del texto */
-        color: inherit;        /* Hereda el color que ya definiste en tus átomos */
-        display: block;        /* Importante: para que el enlace ocupe todo el espacio del article */
-        height: 100%;          /* Asegura que cubra toda la altura */
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
     }
 
 
@@ -59,7 +59,7 @@
 
 // --- TABLET ---
 @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
-    .molecule-card {
+    .molecule-card--link {
         
         opacity: map.get(colorMap.$opacity-levels, 80);
         
@@ -71,7 +71,7 @@
             display: none;
         }
     }
-    .molecule-card--hover {
+    .molecule-card--link:hover {
         opacity: map.get(colorMap.$opacity-levels, 100);
         .atom-pill-card--base{
             display: none;

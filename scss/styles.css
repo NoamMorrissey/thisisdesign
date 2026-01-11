@@ -1964,10 +1964,10 @@ body {
 }
 
 .molecule-card .molecule-card--link {
-  text-decoration: none; /* Quita el subrayado del texto */
-  color: inherit; /* Hereda el color que ya definiste en tus átomos */
-  display: block; /* Importante: para que el enlace ocupe todo el espacio del article */
-  height: 100%; /* Asegura que cubra toda la altura */
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
 }
 .molecule-card .molecule-pill-card {
   width: -moz-fit-content;
@@ -1995,22 +1995,22 @@ body {
 }
 
 @media (min-width: 768px) {
-  .molecule-card {
+  .molecule-card--link {
     opacity: 80%;
   }
-  .molecule-card .atom-pill-card--base {
+  .molecule-card--link .atom-pill-card--base {
     display: flex;
   }
-  .molecule-card .atom-pill-card--hover {
+  .molecule-card--link .atom-pill-card--hover {
     display: none;
   }
-  .molecule-card--hover {
+  .molecule-card--link:hover {
     opacity: 100%;
   }
-  .molecule-card--hover .atom-pill-card--base {
+  .molecule-card--link:hover .atom-pill-card--base {
     display: none;
   }
-  .molecule-card--hover .atom-pill-card--hover {
+  .molecule-card--link:hover .atom-pill-card--hover {
     display: flex;
   }
 }
