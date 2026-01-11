@@ -1819,46 +1819,66 @@ body {
   background-image: url("../assets/images/flags/ES.png");
 }
 
-.atom-pill-card {
+.atom-pill-card--base,
+.atom-pill-card--hover {
   font-family: "Public Sans";
   font-weight: 600;
   font-size: 0.625rem;
   line-height: 0.875rem;
   letter-spacing: -0.02em;
-  display: flex;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  background-color: #FFFFFF;
+  border-radius: 255px;
+  margin: 0px;
   align-items: center;
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  position: absolute;
+  grid-area: 1/1; /* Ambos ocupan la fila 1, columna 1 */
 }
-.atom-pill-card .material-icons {
+.atom-pill-card--base .material-icons,
+.atom-pill-card--hover .material-icons {
   display: none;
 }
 @media (min-width: 768px) {
-  .atom-pill-card {
+  .atom-pill-card--base,
+  .atom-pill-card--hover {
     font-size: 0.625rem;
     line-height: 0.875rem;
     gap: 6px;
+    padding: 4px 16px;
   }
-  .atom-pill-card .material-icons {
+  .atom-pill-card--base .material-icons,
+  .atom-pill-card--hover .material-icons {
     display: inline;
     font-size: 20px;
   }
 }
 @media (min-width: 1024px) {
-  .atom-pill-card {
+  .atom-pill-card--base,
+  .atom-pill-card--hover {
     font-size: 0.75rem;
     line-height: 1.125rem;
     gap: 8px;
+    padding: 6px 18px;
   }
-  .atom-pill-card .material-icons {
+  .atom-pill-card--base .material-icons,
+  .atom-pill-card--hover .material-icons {
     font-size: 22px;
   }
 }
 @media (min-width: 1366px) {
-  .atom-pill-card {
+  .atom-pill-card--base,
+  .atom-pill-card--hover {
     font-size: 0.875rem;
     line-height: 1.25rem;
     gap: 12px;
+    padding: 8px 20px;
   }
-  .atom-pill-card .material-icons {
+  .atom-pill-card--base .material-icons,
+  .atom-pill-card--hover .material-icons {
     font-size: 24px;
   }
 }
@@ -1951,6 +1971,39 @@ body {
   padding-left: 2.5%;
 }
 
+.molecule-card .molecule-card--link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+.molecule-card .molecule-pill-card {
+  display: grid; /* Crea un contexto de rejilla */
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+@media (min-width: 768px) {
+  .molecule-card--link .atom-pill-card--base {
+    transform: translateX(0);
+    opacity: 0.8;
+    transition: all 200ms cubic-bezier(0, 0, 1, 1);
+  }
+  .molecule-card--link .atom-pill-card--hover {
+    pointer-events: none;
+    opacity: 0;
+    transition: all 200ms cubic-bezier(0, 0, 1, 1);
+  }
+  .molecule-card--link:hover .atom-pill-card--base {
+    pointer-events: none;
+    opacity: 0%;
+    transform: translateX(30px);
+  }
+  .molecule-card--link:hover .atom-pill-card--hover {
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
 .organism-nav {
   position: fixed;
   top: 0;
@@ -2064,8 +2117,8 @@ body {
     gap: 0px;
     margin: 0 auto;
     border-radius: 8px;
-    background-color: color-mix(in srgb, #FFFFFF, transparent);
-    box-shadow: 0 0 8px 0 color-mix(in srgb, #000000, transparent);
+    background-color: color-mix(in srgb, #FFFFFF 80%, transparent);
+    box-shadow: 0 0 8px 0 color-mix(in srgb, #000000 20%, transparent);
     padding: 4px 4px 4px 0px;
   }
   .organism-nav.is-hidden {
