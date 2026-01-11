@@ -2,9 +2,7 @@
 // DEPENDENCIAS
 // -----------------------------------------------------------
 @use 'sass:map';
-@use 'sass:math'; 
 @use 'sass:string' as s;
-@use '../1-settings/options' as settings;
 @use '../1-settings/opt-typography' as typoMaps;
 @use '../1-settings/opt-breakpoints' as break;
 @use './functions' as func;

@@ -2,11 +2,8 @@
 // DEPENDENCIAS
 // -----------------------------------------------------------
 @use 'sass:map';
-@use '../../2-tools/functions' as func;
-@use '../../2-tools/mixins' as mix;
 @use '../../1-settings/options' as mapOpt;
 @use '../../1-settings/opt-colors' as colorMap;
-@use '../../1-settings/opt-typography' as typoMap;
 @use '../../1-settings/opt-breakpoints' as break;
 
 // -----------------------------------------------------------

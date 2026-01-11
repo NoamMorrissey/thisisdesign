@@ -2,11 +2,8 @@
 // DEPENDENCIAS
 // -----------------------------------------------------------
 @use 'sass:map';
-@use '../../2-tools/functions' as func;
-@use '../../2-tools/mixins' as mix;
 @use '../../1-settings/options' as mapOpt;
 @use '../../1-settings/opt-colors' as colorMap;
-@use '../../1-settings/opt-typography' as typoMap;
 @use '../../1-settings/opt-breakpoints' as break;
 
 // -----------------------------------------------------------
@@ -64,7 +61,7 @@
         }
         .atom-pill-card--hover{
 
-            opacity: opacity: map.get(colorMap.$opacity-levels, 100); // Aparece
+            opacity: map.get(colorMap.$opacity-levels, 100); // Aparece
             transform: translateX(map.get(mapOpt.$opt-dimensions, 0)); // Llega a su posición original
         }
     }
