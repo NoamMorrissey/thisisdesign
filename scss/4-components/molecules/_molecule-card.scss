@@ -12,59 +12,72 @@
 // -----------------------------------------------------------
 // ESTADOS
 // -----------------------------------------------------------
+.molecule-card {
+
+    // Enlace A de toda la CARD
+    .molecule-card--link {
+        text-decoration: none; /* Quita el subrayado del texto */
+        color: inherit;        /* Hereda el color que ya definiste en tus átomos */
+        display: block;        /* Importante: para que el enlace ocupe todo el espacio del article */
+        height: 100%;          /* Asegura que cubra toda la altura */
+    }
+
+
+
+    // Molécula PILL de la CARD
+    .molecule-pill-card {
+        width: fit-content;
+        display: flex;
+        align-items: center;
+        background-color: map.get(colorMap.$opt-colors, 'base', 'white');
+        border-radius: map.get(mapOpt.$opt-radius, 100);
+        padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 60);
+
+        // --- TABLET ---
+        @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 80);
+        
+        }
+        // --- LAPTOP ---
+        @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 90);
+
+        }
+        // --- DESKTOP ---
+        @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
+
+            padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 100);
+
+        }
+    }
+
+}
+
+
+
 // --- TABLET ---
-    @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
-        .molecule-card {
+@media (min-width: map.get(break.$opt-breakpoints, tablet)) {
+    .molecule-card {
+        
+        opacity: map.get(colorMap.$opacity-levels, 80);
+        
+        .atom-pill-card--base{
+            display: flex;
             
-            opacity: map.get(colorMap.$opacity-levels, 80);
-            
-            .atom-pill-card--base{
-                display: flex;
-                
-            }
-            .atom-pill-card--hover{
-                display: none;
-            }
         }
-        .molecule-card--hover {
-
-            opacity: map.get(colorMap.$opacity-levels, 100);
-
-            .atom-pill-card--base{
-                display: none;
-            }
-            .atom-pill-card--hover{
-                display: flex;
-            }
+        .atom-pill-card--hover{
+            display: none;
         }
     }
-
-
-
-.molecule-pill-card {
-    width: fit-content;
-    display: flex;
-    align-items: center;
-    background-color: map.get(colorMap.$opt-colors, 'base', 'white');
-    border-radius: map.get(mapOpt.$opt-radius, 100);
-    padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 60);
-
-    // --- TABLET ---
-    @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
-
-        padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 80);
-    
-    }
-    // --- LAPTOP ---
-    @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
-
-        padding: map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 90);
-
-    }
-    // --- DESKTOP ---
-    @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
-
-        padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 100);
-
+    .molecule-card--hover {
+        opacity: map.get(colorMap.$opacity-levels, 100);
+        .atom-pill-card--base{
+            display: none;
+        }
+        .atom-pill-card--hover{
+            display: flex;
+        }
     }
 }
