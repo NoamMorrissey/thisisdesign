@@ -15,14 +15,21 @@
 // --- TABLET ---
     @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
         .molecule-card {
+            
+            opacity: map.get(colorMap.$opacity-levels, 80);
+            
             .atom-pill-card--base{
                 display: flex;
+                
             }
             .atom-pill-card--hover{
                 display: none;
             }
         }
         .molecule-card--hover {
+
+            opacity: map.get(colorMap.$opacity-levels, 100);
+
             .atom-pill-card--base{
                 display: none;
             }

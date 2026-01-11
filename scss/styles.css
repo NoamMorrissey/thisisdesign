@@ -1964,11 +1964,17 @@ body {
 }
 
 @media (min-width: 768px) {
+  .molecule-card {
+    opacity: 80%;
+  }
   .molecule-card .atom-pill-card--base {
     display: flex;
   }
   .molecule-card .atom-pill-card--hover {
     display: none;
+  }
+  .molecule-card--hover {
+    opacity: 100%;
   }
   .molecule-card--hover .atom-pill-card--base {
     display: none;
@@ -2115,8 +2121,8 @@ body {
     gap: 0px;
     margin: 0 auto;
     border-radius: 8px;
-    background-color: color-mix(in srgb, #FFFFFF, transparent);
-    box-shadow: 0 0 8px 0 color-mix(in srgb, #000000, transparent);
+    background-color: color-mix(in srgb, #FFFFFF 80%, transparent);
+    box-shadow: 0 0 8px 0 color-mix(in srgb, #000000 20%, transparent);
     padding: 4px 4px 4px 0px;
   }
   .organism-nav.is-hidden {
