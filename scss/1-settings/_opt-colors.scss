@@ -109,6 +109,7 @@ $opt-colors: (
 // -----------------------------------------------------------
 // Almacenamos los niveles de opacidad como valores numéricos para usar con color.fade-out()
 $opacity-levels: (
+    0: 0%,
     05: 5%,
     10: 10%,
     20: 20%,

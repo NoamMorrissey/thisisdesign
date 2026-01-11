@@ -22,62 +22,50 @@
         height: 100%;
     }
 
-
-
     // Molécula PILL de la CARD
     .molecule-pill-card {
+
+        display: grid; /* Crea un contexto de rejilla */
         width: fit-content;
-        display: flex;
-        align-items: center;
-        background-color: map.get(colorMap.$opt-colors, 'base', 'white');
-        border-radius: map.get(mapOpt.$opt-radius, 100);
-        padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 60);
-
-        // --- TABLET ---
-        @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
-
-            padding: map.get(mapOpt.$opt-dimensions, 30) map.get(mapOpt.$opt-dimensions, 80);
-        
-        }
-        // --- LAPTOP ---
-        @media (min-width: map.get(break.$opt-breakpoints, laptop)) {
-
-            padding: map.get(mapOpt.$opt-dimensions, 40) map.get(mapOpt.$opt-dimensions, 90);
-
-        }
-        // --- DESKTOP ---
-        @media (min-width: map.get(break.$opt-breakpoints, desktop)) {
-
-            padding: map.get(mapOpt.$opt-dimensions, 50) map.get(mapOpt.$opt-dimensions, 100);
-
-        }
     }
 
 }
 
-
-
-// --- TABLET ---
+// -----------------------------------------------------------
+// TABLET
+// -----------------------------------------------------------
+// Estilos para la animación de la PILL CARD en el HOVER de <A>
 @media (min-width: map.get(break.$opt-breakpoints, tablet)) {
     .molecule-card--link {
         
-        opacity: map.get(colorMap.$opacity-levels, 80);
-        
         .atom-pill-card--base{
-            display: flex;
+
+            transform: translateX(0);
+            opacity: map.get(colorMap.$opacity-levels, 80);
+            transition: all map.get(mapOpt.$opt-movement-duration, fast) map.get(mapOpt.$opt-movement-easing, linear);
             
         }
         .atom-pill-card--hover{
-            display: none;
+
+            pointer-events: none; // No se puede clicar mientras está oculto
+            opacity: map.get(colorMap.$opacity-levels, 0); // Invisible al inicio
+            transition: all map.get(mapOpt.$opt-movement-duration, fast) map.get(mapOpt.$opt-movement-easing, linear);
+            
         }
     }
     .molecule-card--link:hover {
-        opacity: map.get(colorMap.$opacity-levels, 100);
+
         .atom-pill-card--base{
-            display: none;
+
+            pointer-events: none;
+            opacity: map.get(colorMap.$opacity-levels, 0);
+            transform: translateX(map.get(mapOpt.$opt-dimensions, 150)); // Se retira hacia la derecha
+            
         }
         .atom-pill-card--hover{
-            display: flex;
+
+            opacity: opacity: map.get(colorMap.$opacity-levels, 100); // Aparece
+            transform: translateX(map.get(mapOpt.$opt-dimensions, 0)); // Llega a su posición original
         }
     }
 }
